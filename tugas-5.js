@@ -1,0 +1,17 @@
+describe('TUGAS 5', function(){
+    it('TC-1', function(){
+        cy.visit('https://demoqa.com/automation-practice-form')
+        cy.get('#firstName').type('Zayn').should('have.value', 'Zayn')
+        cy.get('#lastName').type('Malik').should('have.value', 'Malik')
+        cy.get('#userEmail').type('zm@gmail.com').should('have.value', 'zm@gmail.com')
+        cy.get('#genterWrapper > .col-md-9 > :nth-child(1) > .custom-control-label').click().should('contain', 'Male')
+        cy.get('#userNumber').type('081212340000').should('have.value', '0812123400')
+        cy.get('.subjects-auto-complete__value-container').type('Maths').should('contain', 'Maths', 'be.visible')
+        cy.contains('Reading').click({force:true})
+        cy.get('#uploadPicture').attachFile('zayn.jpg')
+        cy.get('#currentAddress').type('Adelaide Street').should('have.value', 'Adelaide Street')
+        cy.get('#stateCity-wrapper > :nth-child(2)').click().should('contain', 'Haryana')
+        cy.get('#stateCity-wrapper > :nth-child(3)').click().should('contain', 'Select City', 'not.be.visible')
+        cy.get('#submit').click().should('have.text', 'Submit')
+    })
+})
